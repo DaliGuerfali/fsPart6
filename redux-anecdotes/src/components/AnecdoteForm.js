@@ -1,20 +1,21 @@
 import { useDispatch } from "react-redux";
-import { anecdoteAction } from "../reducers/anecdoteReducer";
-
+import { createAnecdote } from "../reducers/anecdoteReducer";
+import { notify } from "../reducers/notifReducer";
 
 const AnecdoteForm = () => {
     const dispatch = useDispatch();
 
-    const createAnecdote = (e) => {
+    const create = (e) => {
         e.preventDefault();
-        dispatch(anecdoteAction(e.target.anecdote.value));
+        dispatch(createAnecdote(e.target.anecdote.value));
+        dispatch(notify(`added '${e.target.anecdote.value}'`));
         e.target.anecdote.value = '';
       } 
 
     return (
         <div>
           <h2>create new</h2>
-          <form onSubmit={createAnecdote} >
+          <form onSubmit={create} >
             <div><input name="anecdote" /></div>
             <button type="submit" >create</button>
           </form>
