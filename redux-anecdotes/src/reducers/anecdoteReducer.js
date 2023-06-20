@@ -33,16 +33,17 @@ export const anecdoteAction = (anecdote) => {
 
 const initialState = anecdotesAtStart.map(asObject);
 
-const reducer = (state = initialState, action) => {
+const anecdoteReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'VOTE':
       return state.map(anecdote => anecdote.id !== action.payload ? 
         anecdote : {...anecdote, votes: anecdote.votes + 1});
     case 'NEW_ANECDOTE':
       return state.concat(asObject(action.payload));
-  }
+    default:  
+      return state;
+    }
 
-  return state;
 }
 
-export default reducer;
+export default anecdoteReducer;
