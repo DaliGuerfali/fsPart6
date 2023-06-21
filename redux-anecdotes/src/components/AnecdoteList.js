@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { voteAnecdote } from '../reducers/anecdoteReducer';
-import { notify } from "../reducers/notifReducer";
+import { setNotification } from "../reducers/notifReducer";
+import { updateAnecdote } from "../reducers/anecdoteReducer";
 
 const AnecdoteList = () => {
     const dispatch = useDispatch();
@@ -9,8 +9,9 @@ const AnecdoteList = () => {
     .filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLowerCase())));
 
     const vote = (id) => {
-        dispatch(voteAnecdote(id));
-        dispatch(notify(`you voted '${anecdotes.find(anecdote => anecdote.id === id).content}'`));
+        const anecdote = anecdotes.find(anecdote => anecdote.id === id);
+        dispatch(updateAnecdote(id, anecdote));
+        dispatch(setNotification(`you voted '${anecdote.content}'`, 5)); 
       }
 
     return (
