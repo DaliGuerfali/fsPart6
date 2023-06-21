@@ -32,7 +32,7 @@
     },
     {
       "content": "test anecdote",
-      "votes": 2,
+      "votes": 3,
       "id": "9sElPck"
     },
     {
@@ -44,6 +44,11 @@
       "content": "test 2",
       "votes": 0,
       "id": "0lYwHoh"
+    },
+    {
+      "content": "test 3",
+      "votes": 0,
+      "id": "7NelnGm"
     }
   ]
 }
