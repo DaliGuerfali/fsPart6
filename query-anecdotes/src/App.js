@@ -1,11 +1,13 @@
-import { QueryClient, useMutation, useQuery, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 import anecdoteService from './services/anecdoteService';
+import { createNotif, useNotifDispatch } from './NotificationContext';
 
 const App = () => {
 
   const queryClient = useQueryClient();
+  const dispatchNotif = useNotifDispatch();
 
   const result = useQuery('anecdotes', anecdoteService.getAnecdotes, {
     retry: false,
@@ -19,6 +21,7 @@ const App = () => {
       queryClient.setQueryData('anecdotes', anecdotes.map(anecdote => {
         return anecdote.id !== newAnecdote.id ? anecdote : newAnecdote;
         }));
+      dispatchNotif(createNotif(`voted for '${newAnecdote.content}'`));
     }
     });
     

@@ -1,4 +1,18 @@
+import { useContext, useEffect } from "react"
+import NotificationContext, { clearNotif } from "../NotificationContext"
+
+
 const Notification = () => {
+  const [notif, dispatchNotif] = useContext(NotificationContext);
+
+  useEffect(() => {
+    if(notif) {
+      setTimeout(() => {
+        dispatchNotif(clearNotif());
+      }, 5000);
+    }
+  }, [notif]);
+
   const style = {
     border: 'solid',
     padding: 10,
@@ -6,13 +20,13 @@ const Notification = () => {
     marginBottom: 5
   }
   
-  if (true) return null
-
   return (
+    notif ? 
     <div style={style}>
-      
+      {notif}
     </div>
+    : null
   )
 }
 
-export default Notification
+export default Notification;

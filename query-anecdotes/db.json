@@ -32,8 +32,18 @@
     },
     {
       "content": "test anecdote",
-      "votes": 45,
+      "votes": 47,
       "id": "PEbypZc"
+    },
+    {
+      "content": "test anecdote",
+      "votes": 0,
+      "id": "5I7bkoA"
+    },
+    {
+      "content": "dfgdgfdgfdf",
+      "votes": 0,
+      "id": "43OboPi"
     }
   ]
 }
